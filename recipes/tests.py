@@ -12,7 +12,7 @@ class RecipesModelTest(TestCase):
             difficulty="Medium",
             cooking_time=30
         )
-
+    # test to see if recipe is created successfully
     def test_recipe_creation(self):
         """Test if the recipe is created successfully"""
         self.assertEqual(self.recipe.name, "Spaghetti Carbonara")
