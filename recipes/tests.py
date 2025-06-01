@@ -12,14 +12,25 @@ class RecipesModelTest(TestCase):
             difficulty="Medium",
             cooking_time=30
         )
-    # test to see if recipe is created successfully
-    def test_recipe_creation(self):
-        """Test if the recipe is created successfully"""
-        self.assertEqual(self.recipe.name, "Spaghetti Carbonara")
-        self.assertEqual(self.recipe.ingredients, "Spaghetti, Eggs, Cheese, Bacon, Pepper")
-        self.assertEqual(self.recipe.difficulty, "Medium")
-        self.assertEqual(self.recipe.cooking_time, 30)
 
     def test_str_representation(self):
         """Test the __str__ method"""
         self.assertEqual(str(self.recipe), "Spaghetti Carbonara")
+
+    
+    def test_create_recipe(self):
+        recipe = Recipes.objects.create(
+            name="Spaghetti Carbonara",
+            ingredients="Spaghetti, Eggs, Pancetta, Parmesan",
+            difficulty="Medium",
+            cooking_time=30,
+            description="A classic Italian pasta dish."
+        )
+        self.assertEqual(recipe.name, "Spaghetti Carbonara")
+        self.assertEqual(recipe.difficulty, "Medium")
+        self.assertIn("Pancetta", recipe.ingredients)
+        self.assertEqual(str(recipe), "Spaghetti Carbonara")
+
+    def test_get_absolute_url(self):
+        recipe = Recipes.objects.get(id=1)
+        self.assertEqual(recipe.get_absolute_url(), f"/recipes/list/1")

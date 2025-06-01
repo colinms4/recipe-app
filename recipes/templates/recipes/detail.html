@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+
+<body>
+    <div>
+        <style>
+            body,
+            html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1000px;
+                background-color: white;
+                padding: 30px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                text-align: center;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                color: #4CAF50;
+            }
+
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            tr {
+                border-bottom: 1px solid #ddd;
+            }
+
+            td {
+                padding: 20px;
+                vertical-align: middle;
+            }
+
+            a {
+                text-decoration: none;
+                color: #2196F3;
+                font-weight: bold;
+            }
+
+            a:hover {
+                color: #0b7dda;
+            }
+
+            img {
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            img:hover {
+                transform: scale(1.05);
+            }
+        </style>
+
+        <h2>Recipe: {{object.name}}</h2>
+
+        <b>Name: </b> {{object.name}} <br>
+
+        <b class="description">Description: </b> {{object.description}} <br>
+
+        <b>Ingredients: </b> {{object.ingredients}} <br>
+
+        <b>Cooking Time (in minutes): </b> {{object.cooking_time}} <br>
+
+        <b>Difficulty: </b> {{object.difficulty}} <br>
+
+        <img src="{{object.pic.url}}" width="200" height="300" />
+    </div>
+</body>
+
+</html>
