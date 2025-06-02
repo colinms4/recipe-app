@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import login_view, logout_view
+from django.views.generic import TemplateView
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
-    path('recipes/', include('recipes.urls'))
+    path('recipes/', include('recipes.urls')),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('success/', TemplateView.as_view(template_name='auth/success.html'), name='success')
 ]

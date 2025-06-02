@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Logged Out</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .logout-again {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <h1>You have been logged out successfully!</h1>
+    <a href="{% url 'login' %}" class="logout-again">Login again</a>
+</body>
+
+</html>
