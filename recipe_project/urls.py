@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import login_view, logout_view
 from django.views.generic import TemplateView
+from recipes import views
 
 
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('recipes/', include('recipes.urls')),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-    path('success/', TemplateView.as_view(template_name='auth/success.html'), name='success')
+    path('success/', TemplateView.as_view(template_name='auth/success.html'), name='success'),
+    path('records/', views.records, name='records'),
 ]

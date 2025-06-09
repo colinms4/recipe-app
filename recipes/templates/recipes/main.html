@@ -86,8 +86,18 @@
                 color: #f44336;
                 font-weight: bold;
             }
+
+            .records {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                text-decoration: none;
+                color: #2196F3;
+                font-weight: bold;
+            }
         </style>
 
+        <a href="{% url 'records' %}" class="records">Search</a>
         <a href="{% url 'logout' %}" class="logout">Logout</a>
         <h1>List of Recipes</h1>
 

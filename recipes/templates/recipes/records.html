@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Search Results</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <h1>Search Recipes</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    {% if recipes_qs %}
+    <h2>Search Results:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Difficulty</th>
+                <th>Cooking Time</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes_qs %}
+            <tr>
+                <td><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></td>
+                <td>{{ recipe.difficulty }}</td>
+                <td>{{ recipe.cooking_time }}</td>
+                <td>
+                    <img src="{{ recipe.pic.url }}" alt="{{ recipe.name }}" style="height: 100px;">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+
+    {% if chart %}
+    <h2>Chart:</h2>
+    <img src="data:image/png;base64,{{ chart }}" alt="Chart">
+    {% endif %}
+</body>
+
+</html>
