@@ -10,3 +10,8 @@ class RecipeSearchForm(forms.Form):
         ('#2', 'Pie chart'),
         ('#3', 'Line chart')
     ])
+
+class RecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipes
+        fields = ['name', 'description', 'pic', 'ingredients', 'difficulty', 'cooking_time']

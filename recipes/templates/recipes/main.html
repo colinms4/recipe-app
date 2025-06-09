@@ -20,18 +20,15 @@
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 color: #333;
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
 
             .container {
                 width: 90%;
-                height: auto;
-                min-height: auto;
-                max-width: auto;
                 padding: 30px;
                 margin: 40px auto;
                 border-radius: 12px;
-                overflow: visible;
             }
 
             h1 {
@@ -50,6 +47,38 @@
                 border: 1px solid #d2f5e3;
                 border-radius: 12px;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+                overflow: hidden;
+            }
+
+            .navbar {
+                width: 100%;
+                background: linear-gradient(90deg, #4CAF50 60%, #43a047 100%);
+                padding: 16px 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                box-shadow: 0 4px 16px rgba(76, 175, 80, 0.15);
+                margin-bottom: 32px;
+                gap: 32px;
+            }
+
+            .navbar a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1.1em;
+                padding: 8px 20px;
+                border-radius: 6px;
+                transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .navbar a:hover {
+                background: black;
+                color: #388e3c;
+                box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+                text-decoration: none;
             }
 
             .recipe-text {
@@ -77,28 +106,26 @@
             .recipe-image img:hover {
                 transform: scale(1.05);
             }
-
-            .logout {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                text-decoration: none;
-                color: #f44336;
-                font-weight: bold;
-            }
-
-            .records {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                text-decoration: none;
-                color: #2196F3;
-                font-weight: bold;
-            }
         </style>
 
-        <a href="{% url 'records' %}" class="records">Search</a>
-        <a href="{% url 'logout' %}" class="logout">Logout</a>
+        <nav class="navbar">
+            <div>
+                <a href="{% url 'records' %}"
+                    style="color: white; text-decoration: none; margin-right: 20px;">Search</a>
+            </div>
+            <div>
+                <a href="{% url 'recipes:create_recipe' %}" style="color: white; text-decoration: none;">Create
+                    Recipe</a>
+            </div>
+            <div>
+                <a href="{% url 'recipes:about_me' %}" style="color: white; text-decoration: none;">About Me</a>
+            </div>
+            <div>
+                <a href="{% url 'logout' %}" style="color: white; text-decoration: none;">Logout</a>
+            </div>
+        </nav>
+
+
         <h1>List of Recipes</h1>
 
         {% for object in object_list %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About Me</title>
+    <style>
+        body {
+            background: #f9f9f9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .about-container {
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 16px;
+        }
+
+        .links a {
+            display: block;
+            margin: 12px 0;
+            color: #2196F3;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .links a:hover {
+            color: #0b7dda;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-container">
+        <h1>About Me</h1>
+        <p>Hello! I'm Colin Schletz, a passionate developer.</p>
+        <div class="links">
+            <a href="https://github.com/colinms4" target="_blank">GitHub</a>
+            <a href="https://colinms4.github.io/portfolio-website/" target="_blank">Portfolio</a>
+            <a href="https://www.linkedin.com/in/colin-schletz-3455692a6/" target="_blank">LinkedIn</a>
+            <a class="back-link" href="{% url 'recipes:recipes_list' %}">Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Recipe</title>
+
+    <style>
+        body {
+            background: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            background: #fff;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 24px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="file"],
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            background: #fafafa;
+            box-sizing: border-box;
+        }
+
+        form button[type="submit"] {
+            width: 100%;
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        form button[type="submit"]:hover {
+            background: #388e3c;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #2196F3;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Add a New Recipe</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Recipe</button>
+        </form>
+        <a class="back-link" href="{% url 'recipes:recipes_list' %}">Back to Recipes</a>
+    </div>
+</body>
+
+</html>

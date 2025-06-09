@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Recipes
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RecipeSearchForm  
+from .forms import RecipeSearchForm, RecipeForm 
 import pandas as pd  
 import matplotlib.pyplot as plt
 import io
@@ -28,10 +28,12 @@ class RecipesView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Recipes.objects.all().order_by('name')
 
+
 class RecipesDetailView(LoginRequiredMixin, DetailView):                       
    model = Recipes                                        
    template_name = 'recipes/detail.html'
 
+@login_required
 def records(request):
     form = RecipeSearchForm(request.POST or None)
     recipes_df = None  
@@ -62,3 +64,13 @@ def records(request):
     }
     
     return render(request, 'recipes/records.html', context)
+
+def create_recipe(request):
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('recipes:recipes_list')  
+    else:
+        form = RecipeForm()
+    return render(request, 'recipes/create_recipe.html', {'form': form})
